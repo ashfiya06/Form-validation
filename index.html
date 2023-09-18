@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            font-size: 10px;
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input type="" placeholder="First name" id="FN"  /> <input type="" placeholder="last name" id="LN" required/><br><span class="fn"></span>
+        <br>
+        <label for="">D.O.B: </label>
+        <input type="date" id="DA" ><br><span></span>
+
+        <select>
+            <option value="" disabled selected>Select Gender:</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select><br><span class="gender"></span>
+        <input type="email" pattern="[a-z, A-Z, 0-9]+@gmail.com" placeholder="email"  id="EM"/><span class="email"></span>
+        <input type="tel" placeholder="number" id="ph" /><br><span class="tel"></span>
+        <input type="password" placeholder="password" id="P" />
+        <input type="password" placeholder="confirm" id="CP" /><br><span class="pass"></span>
+        <span class="cpass"></span>
+
+
+
+        <input type="submit" value="submit" onclick="handleSubmit()" />
+<p id="first"></p>
+<p id="last"></p>
+<p id="date"></p>
+<p id="email"></p>
+<p id="number"></p>
+<p id="password"></p>
+    </form>
+    <script>
+        function handleSubmit() {
+            event.preventDefault();
+
+            let first = document.querySelector("#FN").value;
+            let last = document.querySelector("#LN").value;
+
+            console.log(first.length);
+            if (first.length < 3) {
+                document.querySelector(".fn").textContent = "please enter more than 3 characters"
+            }
+            else {
+                document.querySelector(".fn").textContent = ""
+                document.querySelector('#first').textContent=first;
+                document.querySelector('#last').textContent=last;
+            }
+            let date= document.querySelector("#DA").value;
+            document.querySelector("#date").textContent=date;
+
+            let email=document.querySelector("#EM").value;
+            document.querySelector("#email").textContent=email;
+
+
+            let phone= document.querySelector("#ph").value;
+         
+            if(phone.length!==10){
+                document.querySelector(".tel").textContent="number should be 10"
+            }
+            else{
+                document.querySelector(".tel").textContent="";
+                document.querySelector('#number').textContent=number;
+            }
+            let password = document.querySelector("#P");
+            let Confirm  = document.querySelector("#CP");
+            
+            console.log(password.value.length);
+            if (password.value.length<6){
+                document.querySelector(".pass").textContent="characters should be 6"
+                }
+            else if(Confirm.value!==password.value) {
+                document.querySelector(".cpass").textContent="confirm password"
+            }
+            else{
+                document.querySelector(".pass").textContent="";
+                document.querySelector(".cpass").textContent="";
+                document.querySelector('#password').textContent=password;
+            }
+            
+           
+          
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>
